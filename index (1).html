@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tier 1 negara (AdSense)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 24px auto; padding: 0 16px; color: #111; }
+    h1 { font-size: 20px; }
+    p { color: #555; font-size: 14px; }
+    textarea { width: 100%; min-height: 280px; box-sizing: border-box; padding: 10px; font-size: 14px; }
+    button { margin-top: 8px; padding: 8px 14px; border: 0; border-radius: 8px; background: #1877f2; color: #fff; font-weight: 600; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Negara Tier 1 (referensi AdSense)</h1>
+  <p>Bukan daftar resmi Google. Untuk disalin ke pengaturan halaman / catatan. Edit file ini di repo kalau mau diubah.</p>
+  <textarea id="list" readonly>United States
+United Kingdom
+Canada
+Australia
+New Zealand
+Germany
+Switzerland
+Norway
+Sweden
+Denmark
+Netherlands
+Ireland
+Austria
+Belgium
+France
+Finland
+Singapore
+Japan
+United Arab Emirates</textarea>
+  <button id="copy">Salin semua</button>
+  <p id="st"></p>
+  <script>
+    document.getElementById("copy").onclick = async () => {
+      const t = document.getElementById("list").value;
+      try { await navigator.clipboard.writeText(t); document.getElementById("st").textContent = "Tersalin."; }
+      catch (e) { document.getElementById("list").select(); document.execCommand("copy"); document.getElementById("st").textContent = "Tersalin."; }
+    };
+  </script>
+</body>
+</html>
