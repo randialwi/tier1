@@ -3,19 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tier 1 negara (AdSense)</title>
+  <title>List publik — negara & blok komen</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 24px auto; padding: 0 16px; color: #111; }
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; color: #111; }
     h1 { font-size: 20px; }
+    h2 { font-size: 16px; margin-top: 28px; }
     p { color: #555; font-size: 14px; }
-    textarea { width: 100%; min-height: 280px; box-sizing: border-box; padding: 10px; font-size: 14px; }
+    textarea { width: 100%; min-height: 160px; box-sizing: border-box; padding: 10px; font-size: 14px; }
     button { margin-top: 8px; padding: 8px 14px; border: 0; border-radius: 8px; background: #1877f2; color: #fff; font-weight: 600; cursor: pointer; }
+    .ok { color: #1b5e20; font-size: 13px; }
   </style>
 </head>
 <body>
-  <h1>Negara Tier 1 (referensi AdSense)</h1>
-  <p>Bukan daftar resmi Google. Untuk disalin ke pengaturan halaman / catatan. Edit file ini di repo kalau mau diubah.</p>
-  <textarea id="list" readonly>United States
+  <h1>List publik</h1>
+  <p>Blok komen: format koma, siap tempel. Jangan diubah di halaman ini.</p>
+  <h2 id="negara">Negara Tier 1</h2>
+  <textarea id="negaraList" readonly>United States
 United Kingdom
 Canada
 Australia
@@ -34,14 +37,24 @@ Finland
 Singapore
 Japan
 United Arab Emirates</textarea>
-  <button id="copy">Salin semua</button>
-  <p id="st"></p>
+  <button data-copy="negaraList">Salin negara</button>
+  <span class="ok" id="st-negara"></span>
+  <h2 id="komen">Blok komen</h2>
+  <textarea id="komenList" readonly>https://,www.,videos,join group,join,group,check out,full,entertainment,watch full video,𝐅𝐮𝐥𝐥 𝐕𝐢𝐝𝐞𝐨 𝐂𝐥𝐢𝐩𝐬𝐇𝐮𝐛,cheak out vedio,snapext carton,cheak,xnxx,xvideo,xxx,✅ watch full video,full videoos link, https://web.whatsapp.com , https://whatsapp.com</textarea>
+  <button data-copy="komenList">Salin blok komen</button>
+  <span class="ok" id="st-komen"></span>
   <script>
-    document.getElementById("copy").onclick = async () => {
-      const t = document.getElementById("list").value;
-      try { await navigator.clipboard.writeText(t); document.getElementById("st").textContent = "Tersalin."; }
-      catch (e) { document.getElementById("list").select(); document.execCommand("copy"); document.getElementById("st").textContent = "Tersalin."; }
-    };
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      btn.onclick = async () => {
+        const id = btn.getAttribute("data-copy");
+        const t = document.getElementById(id).value;
+        try { await navigator.clipboard.writeText(t); } catch (_) {
+          document.getElementById(id).select();
+          document.execCommand("copy");
+        }
+        document.getElementById(id === "negaraList" ? "st-negara" : "st-komen").textContent = " Tersalin.";
+      };
+    });
   </script>
 </body>
 </html>
